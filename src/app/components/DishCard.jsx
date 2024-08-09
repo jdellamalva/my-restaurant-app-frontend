@@ -40,6 +40,7 @@ const DishCard = ({ dish }) => {
                         <button
                             className="block w-full px-8 py-2 text-lg text-center text-white font-bold bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-600 rounded-full"
                             onClick={handleAddItem}
+                            data-testid="add-to-cart-button"
                         >
                             + Add to Cart
                         </button>

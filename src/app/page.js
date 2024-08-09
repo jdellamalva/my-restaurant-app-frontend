@@ -20,11 +20,12 @@ function HomeComponent() {
 
 function GoogleAuthHandler() {
     const { fetchUserData } = useAppContext();
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await fetch('/api/v1/auth/check', {
+                const response = await fetch(`${apiUrl}/api/v1/auth/check`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

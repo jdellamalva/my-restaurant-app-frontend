@@ -50,12 +50,13 @@ export default function Cart() {
     }, [user, setCart]);
 
     return (
-        <section className="fixed right-20 top-[242px] z-50">
+        <section className="fixed right-20 top-[242px] z-50" data-testid="cart">
             <div className="relative">
                 {pathname !== '/checkout' && (
                     <button
                         onClick={() => setShowCart((prevState) => !prevState)}
                         className="absolute right-0 z-10 bg-green-500 text-white p-3 rounded-full hover:bg-yellow-500 items-center"
+                        data-testid="cart-button"
                     >
                         <svg
                             width="24"
@@ -94,13 +95,14 @@ export default function Cart() {
                             <div className="p-6">
                                 <div className="flex mb-6 content-center justify-between">
                                     <span className="font-bold text-white">Order total</span>
-                                    <span className="text-sm font-bold text-white">
+                                    <span className="text-sm font-bold text-white" data-testid="cart-total">
                                         {displayTotal}
                                     </span>
                                 </div>
                                 <button
                                     onClick={() => (user ? cartRedirect() : loginRedirect())}
                                     className="inline-block w-full px-6 py-3 text-center font-bold text-white bg-green-500 hover:bg-green-600 transition duration-200 rounded-full"
+                                    data-testid="continue-to-pay-button"
                                 >
                                     {user ? "Continue To Pay" : "Login to Order"}
                                 </button>
@@ -109,6 +111,7 @@ export default function Cart() {
                                         clearCart();
                                     }}
                                     className="mt-4 inline-block w-full text-center font-bold text-gray-400 hover:text-gray-200 transition duration-200"
+                                    data-testid="clear-cart-button"
                                 >
                                     Reset Cart
                                 </button>

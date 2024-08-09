@@ -40,6 +40,8 @@ export default function CheckoutForm() {
     const amountInCents = cart.reduce((total, item) => total + item.quantity * item.dish.price, 0);
     const displayTotal = formatUSD(amountInCents / 100);
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     function onChange(e) {
         setData({ ...data, [e.target.name]: e.target.value });
     }
@@ -65,7 +67,7 @@ export default function CheckoutForm() {
             }));
     
             // Step 1: Create a PaymentIntent
-            const paymentIntentResponse = await fetch('/api/v1/payment_intents', {
+            const paymentIntentResponse = await fetch(`${apiUrl}/api/v1/payment_intents`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -116,7 +118,7 @@ export default function CheckoutForm() {
             // Handle success
             if (confirmResponse.paymentIntent.status === 'succeeded') {
                 // Step 3: Create an order in the backend
-                const orderResponse = await fetch('/api/v1/orders', {
+                const orderResponse = await fetch(`${apiUrl}/api/v1/orders`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

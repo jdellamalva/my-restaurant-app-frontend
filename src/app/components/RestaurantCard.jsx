@@ -26,6 +26,7 @@ const RestaurantCard = ({ restaurant }) => {
                         <Link
                             className="block px-8 py-2 text-lg text-center text-white font-bold bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:ring-gray-600 rounded-full"
                             href={`/restaurant/${restaurant.restaurantId}`}
+                            data-testid="restaurant-card"
                         >
                             View
                         </Link>

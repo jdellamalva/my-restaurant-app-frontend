@@ -19,6 +19,8 @@ const AppProvider = ({ children }) => {
         return [];
     });
     const router = useRouter();
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   
     useEffect(() => {
         if (!user) {
@@ -28,7 +30,7 @@ const AppProvider = ({ children }) => {
 
     const saveCart = useCallback(async (updatedCart) => {
         try {
-            const response = await fetch('/api/v1/user/cart', {
+            const response = await fetch(`${apiUrl}/api/v1/user/cart`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +50,7 @@ const AppProvider = ({ children }) => {
 
     const fetchUserData = useCallback(async () => {
         try {
-            const response = await fetch('/api/v1/user', {
+            const response = await fetch(`${apiUrl}/api/v1/user`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,7 +112,7 @@ const AppProvider = ({ children }) => {
             const updatedUser = { ...user, cart: [] };
             setUser(updatedUser);
             try {
-                const response = await fetch('/api/v1/user/cart', {
+                const response = await fetch(`${apiUrl}/api/v1/user/cart`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -128,7 +130,7 @@ const AppProvider = ({ children }) => {
 
     const login = useCallback(async (email, password, setError) => {
         try {
-            const response = await fetch('/api/v1/login', {
+            const response = await fetch(`${apiUrl}/api/v1/login`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -151,7 +153,7 @@ const AppProvider = ({ children }) => {
     
     const register = useCallback(async (email, password, setError) => {
         try {
-            const response = await fetch('/api/v1/register', {
+            const response = await fetch(`${apiUrl}/api/v1/register`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -174,7 +176,7 @@ const AppProvider = ({ children }) => {
 
     const logout = useCallback(async () => {
         try {
-            await fetch('/api/v1/auth/logout', {
+            await fetch(`${apiUrl}/api/v1/auth/logout`, {
                 method: 'GET',
                 credentials: 'include',
             });

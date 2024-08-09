@@ -6,10 +6,12 @@ const OrdersTable = ({ userId }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await fetch(`/api/v1/user/orders?page=${currentPage}&userId=${userId}`, {
+                const response = await fetch(`${apiUrl}/api/v1/user/orders?page=${currentPage}&userId=${userId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

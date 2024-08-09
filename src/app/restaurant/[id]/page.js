@@ -11,7 +11,8 @@ const queryClient = new QueryClient();
 
 // Function to fetch restaurant data
 const fetchRestaurantData = async (id) => {
-    const restaurantResponse = await fetch(`api/v1/restaurants/${id}`);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const restaurantResponse = await fetch(`${apiUrl}/api/v1/restaurants/${id}`);
     if (!restaurantResponse.ok) {
         throw new Error('Failed to fetch restaurant data');
     }
@@ -21,7 +22,8 @@ const fetchRestaurantData = async (id) => {
 
 // Function to fetch individual dish data
 const fetchDishData = async (restaurantId, dishId) => {
-    const dishResponse = await fetch(`/api/v1/restaurants/${restaurantId}/dishes/${dishId}`);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const dishResponse = await fetch(`${apiUrl}/api/v1/restaurants/${restaurantId}/dishes/${dishId}`);
     if (!dishResponse.ok) {
         throw new Error('Failed to fetch dish data');
     }

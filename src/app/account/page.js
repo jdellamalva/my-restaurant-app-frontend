@@ -9,6 +9,8 @@ export default function Account() {
     const { user, setUser, fetchUserData } = useAppContext();
     const router = useRouter();
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
         const fetchData = async () => {
             const data = await fetchUserData();
@@ -26,7 +28,7 @@ export default function Account() {
 
     const handleLogout = async () => {
         try {
-            await fetch('/api/v1/logout', {
+            await fetch(`${apiUrl}/api/v1/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

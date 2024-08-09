@@ -6,12 +6,14 @@ import { useAppContext } from '../context/AppContext';
 import Loader from '../components/Loader';
 import RestaurantCard from '../components/RestaurantCard';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 // Initialize a new query client
 const queryClient = new QueryClient();
 
 // Function to fetch restaurants
 const fetchRestaurants = async () => {
-    const response = await fetch('/api/v1/restaurants');
+    const response = await fetch(`${apiUrl}/api/v1/restaurants`);
     const data = await response.json();
     return data;
 };

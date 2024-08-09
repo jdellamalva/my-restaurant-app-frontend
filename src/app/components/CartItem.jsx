@@ -7,7 +7,7 @@ function CartItem({ data }) {
     const { quantity, dish } = data;
 
     return (
-        <div className="p-6 flex flex-wrap justify-between border-b border-blueGray-800">
+        <div className="p-6 flex flex-wrap justify-between border-b border-blueGray-800" data-testid="cart-item">
             <div className="w-2/4">
                 <div className="flex flex-col h-full">
                     <h6 className="font-bold text-white mb-1">{dish.name}</h6>
@@ -22,12 +22,14 @@ function CartItem({ data }) {
                         <button
                             className="mr-2 inline-block mb-auto font-medium text-sm text-gray-400 hover:text-gray-200"
                             onClick={() => removeFromCart(dish)}
+                            data-testid="remove-from-cart-button"
                         >
                             Remove
                         </button>
                         <button
                             className="inline-block mb-auto font-medium text-sm text-gray-400 hover:text-gray-200"
                             onClick={() => addToCart(dish)}
+                            data-testid="add-to-cart-button"
                         >
                             Add
                         </button>
