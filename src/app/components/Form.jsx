@@ -53,8 +53,10 @@ export default function Form({
         callback(e);
     };
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:3001/api/v1/auth/google';
+        window.location.href = `${apiUrl}/api/v1/auth/google`;
     };
 
     return (
